@@ -1,0 +1,15 @@
+diff --git a/inject.sh b/inject.sh
+index 3163b9d..a22c51a 100755
+--- a/inject.sh
++++ b/inject.sh
+@@ -13,8 +13,8 @@ else
+ 	./update-files.sh "$1"
+ 
+ 	echo " - adding to KConfig..."
+-	sed -i -e '/endmenu/i source "arch/arm/intsight/Kconfig"\' -e '' "$1/arch/arm/Kconfig.debug"
+-	sed -i -e '/endmenu/i source "arch/x86/intsight/Kconfig"\' -e '' "$1/arch/x86/Kconfig.debug"
++	sed -i -e '$asource "arch/arm/intsight/Kconfig"\' -e '' "$1/arch/arm/Kconfig.debug"
++	sed -i -e '$asource "arch/x86/intsight/Kconfig"\' -e '' "$1/arch/x86/Kconfig.debug"
+ 
+ 	echo " - adding to Makefile..."
+ 	echo '\n\ncore-y += arch/arm/intsight/' >> "$1/arch/arm/Makefile"
